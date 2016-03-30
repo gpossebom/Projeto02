@@ -3,8 +3,10 @@ package br.com.Projeto02.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.Projeto02.models.Produto;
 import br.com.Projeto02.models.ProdutoManager;
 
 @Controller
@@ -19,6 +21,15 @@ public class ProdutoController {
 		model.addAttribute("produtos",
 				produtoManager.obterTodos());
 		return "produtos";
+	}
+	
+	@RequestMapping("/detalhe")
+	public String detalhe(@PathVariable("id") long id, Model model)
+	{
+		Produto produto;
+		produto = produtoManager.obterPorId(id);
+		model.addAttribute("produto", produto);
+		return "produto-detalhe";
 	}
 	
 }

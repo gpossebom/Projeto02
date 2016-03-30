@@ -15,4 +15,10 @@ public class ProdutoManagerImpl implements ProdutoManager {
 		return produtoRepository.obterTodos();
 	}
 
+	@Override
+	public Produto obterPorId(long id) {
+		// TODO Auto-generated method stub
+		return produtoRepository.obterPorId(id);
+	}
+
 }
